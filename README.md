@@ -29,6 +29,9 @@ https://docs.docker.com/
 
 https://mariadb.org/documentation/
 
+https://stackoverflow.com/questions/16287559/mysql-adding-user-for-remote-access
+
+https://serverfault.com/questions/333321/executing-a-command-as-a-nologin-user
 
 
 
@@ -36,8 +39,33 @@ https://mariadb.org/documentation/
 
 ##	making the mariadb run on alpine.
 
+making a daemon that runs:
 - install with apk mariadb and su_exec
 - run the command of `mariadb-install-db --user=mysql --datadir=/var/lib/mysql`
 - create the file of /run/mysqld and transfer ownership of it to mysql user and group.
 - now you can run mariadbd to have the program runing.
+
+giving permisions to acces the database form outside.
+- modify the configfile to allow connections from outside.
+- create the user for accessing the database.
+
+
+
+
+
+
+
+#   todo list.
+
+- [ ] make the database accessible from outside.
+- [ ] create a docker compose file for executing this without doing docker run.
+- [ ] handel correctly any secrets.
+
+
+
+
+
+
+
+
 
