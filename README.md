@@ -1,0 +1,43 @@
+_This project has been created as part of the 42 curriculum by @tatahere_
+
+#	Description.
+
+**Inception** as part of the ecole 42 curiculum serves broaden knowlage on systems administration by using docker and docker compose.
+
+It consist on setting up a small infrastrure of containers under specific rules. That will serve a wordpress site.
+
+Some of the constrains are:
+ -	All the containers will be build from the penultimate lts version of devian or alpine. It is forbiden to use ready made docker images for services like nginx or mariaDB.
+ -	It is forbiden to use hacky patches to stop the container from stoping like : `tail -f`, `bash`, `sleep infinity`, `while true`.
+ -	It is forbiden to use `network: host` or `--link`, you must create a docker network that only exposes the port 443 to the outside throug the nginx container.
+ -	It is forbiden to store any credentials or API keys on docker files or anywere on the repository.
+ -	It 
+
+
+
+#	Instructions.
+
+#	IA usage.
+
+No IA was used during research or development of this project.
+
+#	Resourses.
+
+https://wiki.alpinelinux.org
+
+https://docs.docker.com/
+
+https://mariadb.org/documentation/
+
+
+
+
+#	notes.
+
+##	making the mariadb run on alpine.
+
+- install with apk mariadb and su_exec
+- run the command of `mariadb-install-db --user=mysql --datadir=/var/lib/mysql`
+- create the file of /run/mysqld and transfer ownership of it to mysql user and group.
+- now you can run mariadbd to have the program runing.
+
