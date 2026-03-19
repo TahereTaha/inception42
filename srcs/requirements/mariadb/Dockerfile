@@ -6,7 +6,6 @@ WORKDIR /
 RUN apk update \
 	&& apk upgrade \
 	&& apk add --no-cache mariadb mariadb-client
-RUN apk add vim
 
 #	initialize the folders that mariadb needs.
 RUN mariadb-install-db --user=mysql --datadir=/var/lib/mysql
@@ -17,13 +16,9 @@ RUN mkdir mariadb
 COPY conf /mariadb/conf
 RUN cp /mariadb/conf/mariadb.conf /etc/my.cnf
 
+#	set up the database.
 COPY tools /mariadb/tools
-RUN chmod +x /mariadb/tools/init_users.sh
-
-#	set up user.
-RUN /mariadb/tools/init_users.sh
+RUN chmod +x /mariadb/tools/init_db.sh
+RUN /mariadb/tools/init_db.sh
 
 ENTRYPOINT ["su", "-s", "/bin/sh", "mysql", "-c", "mariadbd --datadir=/var/lib/mysql"]
-#ENTRYPOINT su -s /bin/sh mysql -c "mariadb --datadir=/var/lib/mysql"
-#ENTRYPOINT sh
-
