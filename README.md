@@ -33,7 +33,7 @@ https://stackoverflow.com/questions/16287559/mysql-adding-user-for-remote-access
 
 https://serverfault.com/questions/333321/executing-a-command-as-a-nologin-user
 
-
+https://www.baeldung.com/ops/docker-container-shell
 
 #	notes.
 
@@ -51,7 +51,10 @@ giving permisions to acces the database form outside.
 
 
 
-
+to use the virtual machine run the next command.
+```
+	qemu-system-x86_64 -m 2048 -nic user -drive file=alpine.qcow2 -display gtk -enable-kvm
+```
 
 
 
