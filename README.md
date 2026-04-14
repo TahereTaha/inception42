@@ -35,6 +35,14 @@ https://serverfault.com/questions/333321/executing-a-command-as-a-nologin-user
 
 https://www.baeldung.com/ops/docker-container-shell
 
+https://gist.github.com/extremecoders-re/e8fd8a67a515fee0c873dcafc81d811c
+
+https://wiki.alpinelinux.org/wiki/Docker
+
+https://www.qemu.org/docs/master/system/invocation.html
+
+https://dev.to/franzwong/mount-share-folder-in-qemu-with-same-permission-as-host-2980
+
 #	notes.
 
 ##	making the mariadb run on alpine.
@@ -53,7 +61,7 @@ giving permisions to acces the database form outside.
 
 to use the virtual machine run the next command.
 ```
-	qemu-system-x86_64 -m 2048 -nic user -drive file=alpine.qcow2 -display gtk -enable-kvm
+	qemu-system-x86_64 -m 2048 -device e1000,netdev=mynet0 -netdev user,id=mynet0,hostfwd=tcp::8080-:22 -drive file=alpine.qcow2 -display gtk -enable-kvm -virtfs local,path=shared_dir,mount_tag=shared,security_model=mapped-xattr
 ```
 
 
