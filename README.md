@@ -61,7 +61,7 @@ giving permisions to acces the database form outside.
 
 to use the virtual machine run the next command.
 ```
-	qemu-system-x86_64 -m 2048 -device e1000,netdev=mynet0 -netdev user,id=mynet0,hostfwd=tcp::8080-:22 -drive file=alpine.qcow2 -display gtk -enable-kvm -virtfs local,path=shared_dir,mount_tag=shared,security_model=mapped-xattr
+    qemu-system-x86_64 -m 4096 -cpu host -smp cores=4 -device e1000,netdev=mynet0 -netdev user,id=mynet0,hostfwd=tcp::8080-:22 -drive file=alpine.qcow2 -display gtk -enable-kvm -virtfs local,path=shared_dir,mount_tag=shared,security_model=mapped-xattr
 ```
 to mount the shared folder do the next command on the virtual machine.
 ```
