@@ -18,6 +18,7 @@ RUN cp /mariadb/conf/mariadb.conf /etc/my.cnf
 
 #	set up the database.
 COPY tools /mariadb/tools
+COPY .build.env /mariadb/.build.env
 RUN chmod +x /mariadb/tools/init_db.sh
 RUN /mariadb/tools/init_db.sh
 

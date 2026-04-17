@@ -3,6 +3,7 @@ services:
   mariadb:
     build: ./requirements/mariadb
     container_name: my_mariadb
+    env_file: .env
     ports:
       - "3306:3306"
 

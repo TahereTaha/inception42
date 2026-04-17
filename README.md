@@ -72,9 +72,11 @@ to mount the shared folder do the next command on the virtual machine.
 
 #   todo list.
 
-- [ ] make the database accessible from outside.
-- [ ] create a docker compose file for executing this without doing docker run.
+- [x] make the database accessible from outside.
+- [x] create a docker compose file for executing this without doing docker run.
+- [ ] add a .env.
 - [ ] handel correctly any secrets.
+- [ ] add persistence to the database.
 
 
 
