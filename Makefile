@@ -17,10 +17,13 @@ fre: fclean all
 
 #	Build
 
-build:	$(BUILD_ENV_FILE)
-
-$(BUILD_ENV_FILE): $(ENV_FILE)
+build:
 	cp $(ENV_FILE) $(BUILD_ENV_FILE)
+	for file in secrets/* ; do \
+		echo -n $$(basename $$file)"=" >> $(BUILD_ENV_FILE); \
+		cat $$file | head -n 1 >> $(BUILD_ENV_FILE); \
+		echo "" >> $(BUILD_ENV_FILE); \
+	done
 	cp $(BUILD_ENV_FILE) $(NGINX_DIR)
 	cp $(BUILD_ENV_FILE) $(MARIADB_DIR)
 	cp $(BUILD_ENV_FILE) $(WORDPRESS_DIR)

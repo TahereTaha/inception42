@@ -1,4 +1,5 @@
 **/*.swp
-**/.build.env
+srcs/requirements/*/.build.env
+srcs/.build.env
 
 secrets/*
