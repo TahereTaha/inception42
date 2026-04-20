@@ -11,11 +11,15 @@ services:
       - mariadb_password
     volumes:
       - mariadb_data:/var/lib/mysql
-
+    networks:
+      - inception
+  
 
 volumes:
   mariadb_data:
 
+networks:
+  inception:
 
 secrets:
   mariadb_user:
