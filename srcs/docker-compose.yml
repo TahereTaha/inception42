@@ -6,6 +6,20 @@ services:
     env_file: .env
     ports:
       - "3306:3306"
+    secrets:
+      - mariadb_user
+      - mariadb_password
+
+
+
+
+
+
+secrets:
+  mariadb_user:
+    file: ../secrets/MARIADB_USER
+  mariadb_password:
+    file: ../secrets/MARIADB_PASSWORD
 
 
 
