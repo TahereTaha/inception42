@@ -13,10 +13,39 @@ services:
       - mariadb_data:/var/lib/mysql
     networks:
       - inception
-  
+  wordpress:
+    build: ./requirements/wordpress
+    container_name: my_wordpress
+    ports:
+      - "9000:9000"
+    env_file: .env
+    secrets:
+      - mariadb_user
+      - mariadb_password
+    volumes:
+      - wordpress_data:/var/www/wordpress
+    networks:
+      - inception
+  nginx:
+    build: ./requirements/nginx
+    container_name: my_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file: .env
+    secrets:
+      - mariadb_user
+      - mariadb_password
+    volumes:
+      - wordpress_data:/var/www/wordpress
+    networks:
+      - inception
+
 
 volumes:
   mariadb_data:
+    
+  wordpress_data:
 
 networks:
   inception:

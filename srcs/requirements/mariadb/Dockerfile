@@ -23,3 +23,4 @@ RUN chmod +x /mariadb/tools/init_db.sh
 RUN /mariadb/tools/init_db.sh
 
 ENTRYPOINT ["su", "-s", "/bin/sh", "mysql", "-c", "mariadbd --datadir=/var/lib/mysql"]
+

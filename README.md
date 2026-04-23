@@ -43,6 +43,8 @@ https://www.qemu.org/docs/master/system/invocation.html
 
 https://dev.to/franzwong/mount-share-folder-in-qemu-with-same-permission-as-host-2980
 
+https://kb.shells.com/tutorials/Alpine_Linux_Latest/WordPress/
+
 #	notes.
 
 ##	making the mariadb run on alpine.
@@ -68,6 +70,21 @@ to mount the shared folder do the next command on the virtual machine.
 	mount -t 9p -o trans=virtio,version=9p2000.L shared /mnt/shared
 ```
 
+##  making the wordpress run on alpine.
+
+install the next pacages:
+    - mariadb-client
+    - curl
+    - php
+    - php-phar
+    - php-mysqli
+
+install wordpress:
+    - curl -O https://wordpress.org/latest.tar.gz
+    - tar -xf 
+
+install wp-cli:
+    - curl 
 
 
 #   todo list.

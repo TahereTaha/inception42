@@ -52,6 +52,7 @@ clean:
 	if docker image ls -aq | grep -q '' ; then \
 		docker image rm -f $$(docker image ls -aq); \
 	fi
+	docker volume prune -af
 	rm -rf **/.build.env
 
 fclean: clean
