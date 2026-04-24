@@ -34,7 +34,12 @@ COPY tools /wordpress/tools
 COPY conf /wordpress/conf/
 RUN mv /wordpress/conf/www.conf /etc/php83/php-fpm.d/www.conf
 RUN chmod +x /wordpress/tools/init_wp_config_file.sh
+RUN chmod +x /wordpress/tools/init_wp_cli.sh
 
+WORKDIR /wordpress
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN mv wp-cli.phar /bin/wp
+RUN chmod +x /bin/wp
 
 #install wordpress.
 WORKDIR /var/www
@@ -47,6 +52,6 @@ WORKDIR /var/www/wordpress
 RUN mv wp-config-sample.php wp-config.php
 RUN /wordpress/tools/init_wp_config_file.sh
 
-#ENTRYPOINT ["/wordpress/run.sh"]
-ENTRYPOINT ["php-fpm83", "-F"]
 
+#ENTRYPOINT ["sleep", "infinity"]
+ENTRYPOINT ["/wordpress/tools/init_wp_cli.sh"]

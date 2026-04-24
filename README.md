@@ -45,6 +45,10 @@ https://dev.to/franzwong/mount-share-folder-in-qemu-with-same-permission-as-host
 
 https://kb.shells.com/tutorials/Alpine_Linux_Latest/WordPress/
 
+https://linuxconfig.org/bash-scripting-tutorial-for-beginners
+
+https://developer.wordpress.org/cli/commands/cli/
+
 #	notes.
 
 ##	making the mariadb run on alpine.
@@ -91,10 +95,9 @@ install wp-cli:
 
 - [x] make the database accessible from outside.
 - [x] create a docker compose file for executing this without doing docker run.
-- [ ] add a .env.
-- [ ] handel correctly any secrets.
-- [ ] add persistence to the database.
-
+- [x] add a .env.
+- [x] handel correctly any secrets.
+- [x] add persistence to the database.
 
 
 
