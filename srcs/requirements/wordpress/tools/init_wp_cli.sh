@@ -19,7 +19,5 @@ if [ $? -eq 1 ]; then
 			--user_pass="$WP_USER_PASSWORD"
 fi
 
-
-
 exec php-fpm83 -F 
 
