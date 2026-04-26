@@ -45,14 +45,16 @@ ps:
 
 #	Cleanup
 
-clean:
+clean: down 
 	if docker ps -aq | grep -q '' ; then \
 		docker rm -f $$(docker ps -aq); \
 	fi
 	if docker image ls -aq | grep -q '' ; then \
 		docker image rm -f $$(docker image ls -aq); \
 	fi
-	docker volume rm -f $(docker volume ls -q)
+	if dockre volume ls -q | grep -q '' ; then \
+		docker volume rm -f $$(docker volume ls -q); \
+	fi
 	docker volume prune -af
 	rm -rf **/.build.env
 
