@@ -1,20 +1,20 @@
-
+#!/bin/sh
 #	set up the enviroment.
 export $(< /wordpress/.build.env tr '\n' ' ')
 
-echo "before timer"
-sleep 10
-echo "after timer"
+while ! mariadb-admin ping -h my_mariadb -u $MARIADB_USER -p$MARIADB_PASSWORD ; do
+    sleep 1
+done
 
 wp core is-installed --allow-root
-if  [ $? -eq 1 ] ; then
+if [ $? -eq 1 ]; then 
 	wp core install \
 		--url="$SITE_URL" \
 		--title="$WP_SITE_TITLE" \
 		--admin_user="$WP_ADMIN_USER" \
 		--admin_password="$WP_ADMIN_PASSWORD" \
-		--admin_email="$WP_ADMIN_EMAIL" 
+		--admin_email="$WP_ADMIN_EMAIL"
 fi
 
-exec php-fpm83 -F  
+exec php-fpm83 -F 
 

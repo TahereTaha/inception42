@@ -5,6 +5,10 @@ _This project has been created as part of the 42 curriculum by @tatahere_
 **Inception** as part of the ecole 42 curiculum serves broaden knowlage on systems administration by using docker and docker compose.
 
 It consist on setting up a small infrastrure of containers under specific rules. That will serve a wordpress site.
+It will be formed by the next containers:
+ -  A container for the maridb that will store all the sql information needed by the wordpress.
+ -  A container for the wordpress php-fpm that will execute and handel the runing of the php code of the wordpress site.
+ -  A container for the nginx for serving the page to users and adding a tls2 or tls3 to the page.
 
 Some of the constrains are:
  -	All the containers will be build from the penultimate lts version of devian or alpine. It is forbiden to use ready made docker images for services like nginx or mariaDB.
