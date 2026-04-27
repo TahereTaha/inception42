@@ -3,8 +3,8 @@ services:
   mariadb:
     build: ./requirements/mariadb
     container_name: my_mariadb
-    ports:
-      - "3306:3306"
+#   ports:
+#     - "3306:3306"
     env_file: .env
     secrets:
       - mariadb_user
@@ -16,12 +16,18 @@ services:
   wordpress:
     build: ./requirements/wordpress
     container_name: my_wordpress
-    ports:
-      - "9000:9000"
+#   ports:
+#     - "9000:9000"
     env_file: .env
     secrets:
       - mariadb_user
       - mariadb_password
+      - wp_admin_user
+      - wp_admin_password
+      - wp_admin_email
+      - wp_user
+      - wp_user_password
+      - wp_user_email
     volumes:
       - wordpress_data:/var/www/wordpress
     networks:
@@ -33,9 +39,6 @@ services:
       - "80:80"
       - "443:443"
     env_file: .env
-    secrets:
-      - mariadb_user
-      - mariadb_password
     volumes:
       - wordpress_data:/var/www/wordpress
     networks:
@@ -65,6 +68,19 @@ secrets:
     file: ../secrets/MARIADB_USER
   mariadb_password:
     file: ../secrets/MARIADB_PASSWORD
+  wp_admin_email:
+    file: ../secrets/WP_ADMIN_EMAIL
+  wp_admin_user:
+    file: ../secrets/WP_ADMIN_USER
+  wp_admin_password:
+    file: ../secrets/WP_ADMIN_PASSWORD
+  wp_user:
+    file: ../secrets/WP_USER
+  wp_user_email:
+    file: ../secrets/WP_USER_EMAIL
+  wp_user_password:
+    file: ../secrets/WP_USER_PASSWORD
+
 
 
 
