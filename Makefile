@@ -27,11 +27,13 @@ build:
 	cp $(BUILD_ENV_FILE) $(NGINX_DIR)
 	cp $(BUILD_ENV_FILE) $(MARIADB_DIR)
 	cp $(BUILD_ENV_FILE) $(WORDPRESS_DIR)
+	mkdir /home/tatahere/data/mariadb
+	mkdir /home/tatahere/data/wordpress
 
 
 #	Utils
 
-up:
+up: build
 	docker compose --file $(COMPOSE_FILE) up -d
 
 stop:
@@ -52,7 +54,7 @@ clean: down
 	if docker image ls -aq | grep -q '' ; then \
 		docker image rm -f $$(docker image ls -aq); \
 	fi
-	if dockre volume ls -q | grep -q '' ; then \
+	if docker volume ls -q | grep -q '' ; then \
 		docker volume rm -f $$(docker volume ls -q); \
 	fi
 	docker volume prune -af
